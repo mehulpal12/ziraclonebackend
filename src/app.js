@@ -1,5 +1,6 @@
 import express from 'express';
 import cors from 'cors';
+
 const app = express();
 app.use(cors({
     origin: process.env.CORS_ORIGIN?.split(",") || "*",
@@ -18,6 +19,10 @@ app.get("/" , (req,res) => {
 app.get("/hello" , (req,res) => {
     res.send("Hello World!");
 })
+
+import healthcheckRoutes from "./routes/healthcheck.routes.js";
+
+app.use("/api/v1/healthcheck", healthcheckRoutes);
 
 
 export default app;
