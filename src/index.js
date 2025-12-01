@@ -2,5 +2,18 @@ import { configDotenv } from "dotenv";
 configDotenv({
     path:"./.env",
 });
+import app from "./app.js";
+import connectDB from "./db/index.js";
 
-console.log("hello world254");
+const PORT = process.env.PORT || 5000;
+
+connectDB().then(() => {
+    app.listen(PORT, () => {
+        console.log(`Server is running on port ${PORT}`);
+    });
+}).catch((err) => {
+    console.error("Failed to connect to the database", err);
+    process.exit(1);
+});
+
+
