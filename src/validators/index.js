@@ -13,7 +13,7 @@ const userRegistrationValidator = () =>{
 
 const  userLoginValidator = () =>{
     return [
-         body("email").optional().isEmail().withMessage("Email must be a valid email address"),
+         body("email").isEmail().withMessage("Email must be a valid email address"),
         body("password").notEmpty().withMessage("Password is required")
     ]
 }
